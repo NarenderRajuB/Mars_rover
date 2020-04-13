@@ -1,5 +1,5 @@
 # Mars_rover
-Python3 application for mars rover problem
+Mars Rover technical challenge
 
 A squad of robotic rovers are to be landed by NASA on a plateau on Mars. This plateau, which is curiously rectangular,
 must be navigated by the rovers so that their on-board cameras can get a complete view of the surrounding terrain to
@@ -40,12 +40,15 @@ Result for above input after executing
 # Installing MarsRover
 
    git clone https://github.com/NarenderRajuB/Mars_rover
+   
    cd Mars_rover
+   
    pip3 install .
 
 
 # Create a Mars rover distribution package
    cd Mars_rover
+   
    python3 setup sdist
    
    Above command will create MarsRover-0.0.1.tar.gz in dist/ folder
