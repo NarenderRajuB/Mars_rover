@@ -1,4 +1,4 @@
-class Position:
+class RoverPosition:
     x = 0
     y = 0
 

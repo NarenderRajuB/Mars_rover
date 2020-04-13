@@ -1,11 +1,11 @@
 from marsrover import Plateau
-from marsrover import Position
+from marsrover import RoverPosition
 from marsrover import Rover
 
 
 def main():
     plateau = Plateau(5, 5)
-    position = Position(1, 2)
+    position = RoverPosition(1, 2)
     rover = Rover(plateau, position, Rover.DIRECTIONS.get('N'))
     rover.execute_instructions("LMLMLMLMM")
     #Get the rover position

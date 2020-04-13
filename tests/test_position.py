@@ -1,5 +1,5 @@
 import unittest
-from marsrover.position import Position
+from marsrover.position import RoverPosition
 
 
 class TestPosition(unittest.TestCase):
@@ -8,7 +8,7 @@ class TestPosition(unittest.TestCase):
         """
         Test position instance with values passed as parameters
         """
-        position = Position(3, 2)
+        position = RoverPosition(3, 2)
         self.assertEqual(position.x, 3)
         self.assertEqual(position.y, 2)
 
@@ -16,7 +16,7 @@ class TestPosition(unittest.TestCase):
         """
         Test position instance with with default
         """
-        position = Position()
+        position = RoverPosition()
         self.assertEqual(position.x, 0)
         self.assertEqual(position.y, 0)
 
@@ -24,9 +24,9 @@ class TestPosition(unittest.TestCase):
         """
         Test position instances equality method
         """
-        pos1 = Position(2, 5)
-        self.assertTrue(pos1 == Position(2, 5))
-        self.assertFalse(pos1 == Position(1, 2))
+        pos1 = RoverPosition(2, 5)
+        self.assertTrue(pos1 == RoverPosition(2, 5))
+        self.assertFalse(pos1 == RoverPosition(1, 2))
 
 
 if __name__ == '__main__':

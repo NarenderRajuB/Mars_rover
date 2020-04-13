@@ -1,4 +1,4 @@
-from .position import Position
+from .position import RoverPosition
 from .plateau import InvalidDirectionError, InvalidCoordinateError
 
 
@@ -30,16 +30,21 @@ class Rover(object):
         self._position = position
         self._heading = heading
 
+        if isinstance(position, RoverPosition) and not plateau.is_position_within_plateau_area(self._position):
+            print('exception')
+            raise InvalidCoordinateError('rover asdasd initial position out of plateau area')
+
     def __str__(self):
         return self.current_position
 
     def set_position(self, x, y, heading):
-        if not isinstance(self._position, Position):
-            self._position = Position(x, y)
+        if not isinstance(self._position, RoverPosition):
+            self._position = RoverPosition(x, y)
         else:
             self._position.x = x
             self._position.y = y
-
+        if not self._plateau.is_position_within_plateau_area(self._position):
+            raise InvalidCoordinateError('rover initial position out of plateau area')
         self._heading = heading
 
     @property
@@ -90,11 +95,9 @@ class Rover(object):
         if heading towards N rover move will be from (x,y) to (x,y-1)
         if heading towards E rover move will be from (x,y) to (x,y+1)
         if heading towards W rover move will be from (x,y) to (x,y-1)
-        :return: True if rover can be moved in the plateau grid dimensions available
-        if the move is not possible with in the coordinates raise InvalidCoordinateError exception
+        :return: True if rover position is with in the plateau grid dimensions available
+        if the rover position is not with in the coordinates raise InvalidCoordinateError exception
         """
-        if not self._plateau.move_available(self._position):
-            raise InvalidCoordinateError('Rover position out of plateau grid dimensions')
 
         if self.DIRECTIONS['N'] == self._heading:
             self._position.y += 1
@@ -104,6 +107,9 @@ class Rover(object):
             self._position.x += 1
         elif self.DIRECTIONS['W'] == self._heading:
             self._position.x -= 1
+
+        if not self._plateau.is_position_within_plateau_area(self._position):
+            raise InvalidCoordinateError('Rover position out of plateau grid dimensions')
 
         return True
 

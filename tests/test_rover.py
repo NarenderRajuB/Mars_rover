@@ -1,20 +1,20 @@
 import unittest
 from marsrover.rover import Rover
 from marsrover.plateau import Plateau, InvalidCoordinateError, InvalidDirectionError
-from marsrover.position import Position
+from marsrover.position import RoverPosition
 
 
 class TestRover(unittest.TestCase):
     def setUp(self):
         self.plateau_dimensions = Plateau(8, 4)
-        self.rover_initial_position = Position(2, 1)
+        self.rover_initial_position = RoverPosition(2, 1)
 
     def test_rover_instance(self):
         """
         Test rover instance
         """
         plateau_grid = Plateau(7, 7)
-        position = Position(0, 0)
+        position = RoverPosition(0, 0)
 
         rover = Rover(plateau_grid, position, Rover.DIRECTIONS['W'])
         self.assertEqual(position, rover._position)
@@ -34,6 +34,13 @@ class TestRover(unittest.TestCase):
         self.assertEqual(rover._position.x, 1)
         self.assertEqual(rover._position.y, 2)
         self.assertEqual(rover.get_heading, 'W')
+
+    def test_cannot_create_Rover_IfInitial_position_outOf_plateauArea(self):
+        plateau = Plateau(5, 5)
+        initial_position = RoverPosition(6,5)
+        with self.assertRaises(InvalidCoordinateError):
+            Rover(plateau, initial_position, Rover.DIRECTIONS.get('N'))
+
 
     def test_get_heading(self):
         """

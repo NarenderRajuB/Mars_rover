@@ -1,6 +1,6 @@
 import unittest
 from marsrover.plateau import Plateau
-from marsrover.position import Position
+from marsrover.position import RoverPosition
 
 
 class TestPlateau(unittest.TestCase):
@@ -17,11 +17,11 @@ class TestPlateau(unittest.TestCase):
         Test to check of the Move is possible for the Rover in the Plateau
         """
         plateau = Plateau(5, 7)
-        self.assertTrue(plateau.move_available(Position(2, 3)))
-        self.assertFalse(plateau.move_available(Position(6, 2)))
-        self.assertFalse(plateau.move_available(Position(3, 8)))
-        self.assertFalse(plateau.move_available(Position(-1, 2)))
-        self.assertFalse(plateau.move_available(Position(-1, -1)))
+        self.assertTrue(plateau.is_position_within_plateau_area(RoverPosition(2, 3)))
+        self.assertFalse(plateau.is_position_within_plateau_area(RoverPosition(6, 2)))
+        self.assertFalse(plateau.is_position_within_plateau_area(RoverPosition(3, 8)))
+        self.assertFalse(plateau.is_position_within_plateau_area(RoverPosition(-1, 2)))
+        self.assertFalse(plateau.is_position_within_plateau_area(RoverPosition(-1, -1)))
 
 
 if __name__ == '__main__':

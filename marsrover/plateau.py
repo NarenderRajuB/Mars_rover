@@ -21,7 +21,8 @@ class Plateau(object):
         self.MIN_WIDTH = min_width
         self.MIN_HEIGHT = min_height
 
-    def move_available(self, position):
+
+    def is_position_within_plateau_area(self, position):
         """
         Check if rover move is valid
         :param Position position:
