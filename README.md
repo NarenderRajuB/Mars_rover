@@ -30,28 +30,46 @@ LMLMLMLMM
 MMRMMRMRRM
 
 Result for above input after executing
-# python3 main.py
 
 1 3 N
 
 5 1 E
 
+   
 
-Unittest:
+# Installing MarsRover
 
-# python3 -m unittest
+   git clone https://github.com/NarenderRajuB/Mars_rover
+   cd Mars_rover
+   pip3 install .
 
-.....Rover position out of plateau grid dimensions
 
-Rover position out of plateau grid dimensions \n
+# Create a Mars rover distribution package
+   cd Mars_rover
+   python3 setup sdist
+   
+   Above command will create MarsRover-0.0.1.tar.gz in dist/ folder
 
-..Invalid Directions default to North
+   
+# How to use:
+    python3 main.py
+    
+    * output: 
+        1 3 N
+        5 1 E
+    
+# Unittest:
+    python3 -m unittest
 
-...
-----------------------------------------------------------------------
-Ran 10 tests in 0.001s
-
-OK
+    .....rover initial position out of plateau area
+    .Rover position out of plateau grid dimensions
+    Rover position out of plateau grid dimensions
+    ..Invalid Directions default to North
+    ...
+    ----------------------------------------------------------------------
+    Ran 11 tests in 0.001s
+    
+    OK
 
 
 

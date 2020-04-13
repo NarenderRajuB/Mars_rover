@@ -31,8 +31,7 @@ class Rover(object):
         self._heading = heading
 
         if isinstance(position, RoverPosition) and not plateau.is_position_within_plateau_area(self._position):
-            print('exception')
-            raise InvalidCoordinateError('rover asdasd initial position out of plateau area')
+            raise InvalidCoordinateError('rover initial position out of plateau area')
 
     def __str__(self):
         return self.current_position
